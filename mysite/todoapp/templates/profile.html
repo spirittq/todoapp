@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s3"></div>
+        <div class="col s6">
+            <div class="content-section">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="card-panel deep-orange accent-1">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="row">
+                    <div class="col s6">
+                        <img class="circle responsive-img" src="{{ user.profile.pic.url }}">
+                    </div>
+                    <div class="row col s6">
+                        <h2 class="col s12">{{ user.username }}</h2>
+                        <span class="col s12">({{ user.email }})</span>
+                    </div>
+                </div>
+                <div method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col s1"></div>
+                        <div class="col s9">
+                            {{ u_form|crispy }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s1"></div>
+                        <div class="col s9">
+                            {{ p_form|crispy }}
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col s1"></div>
+                        <div class="col s9">
+                            <button class="btn waves-effect waves-light" type="submit">Update</button>
+                        </div>
+                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s3"></div>
+        <div class="col s6">
+            <div class="row">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="grey lighten-4 row">
+                    <legend class="border-bottom mb-4">New Task</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit">Create Task</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
