@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="row"></div>
-    <div class="row">
-        <div class="col s3"></div>
-        <div class="col s6">
-            <p>Under construction</p>
+    <div class="container col s12">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6">
+                {% if user.is_authenticated %}
+                <p>Under construction</p>
+                {% else %}
+                <h1>Welcome to ToDo!</h1>
+                <p>Please <a class="pulse" href="{% url 'login' %}">Log in</a> or <a class="pulse" href="{% url 'register' %}">Register</a></p>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

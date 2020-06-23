@@ -1,46 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="row"></div>
-     {% if messages %}
-            {% for message in messages %}
-                <div class="card-panel deep-orange accent-1">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-    <div class="row">
-        <div class="col s3"></div>
-        <div class="col s6">
-            <h3>Registration</h3><br/>
-            <form method="post">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col s1"></div>
-                    <div class="col s11">
-                        <div class="input-field col s12">
-                            <input name="username" type="text" class="form-control" id="username" aria-describedby="usernameHelp">
-                            <label for="username">Username</label>
-                            <small id="usernameHelp" class="form-text text-muted">Up to 150 symbols.</small>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <label for="exampleInputEmail1">Email</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="password1" type="password" class="form-control" id="password1" aria-describedby="pwdHelp">
-                            <label for="password1">Password</label>
-                            <small id="pwdHelp" class="form-text text-muted">Restrictions don't work</small>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="password2" type="password" class="form-control" id="password2" aria-describedby="pwd2Help">
-                            <label for="password2">Repeat password</label>
-                        </div>
-                        <button type="submit" class="btn waves-effect waves-light">Register</button>
+    <div class="container col s12">
+        <div class="row"></div>
+         {% if messages %}
+                {% for message in messages %}
+                    <div class="card-panel deep-orange accent-1">
+                        {{ message }}
                     </div>
-                </div>
-            </form>
-            <p>Please <a href="/login"><strong>login</strong></a> if you are already registered.</p>
+                {% endfor %}
+            {% endif %}
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6">
+                <h3>Registration</h3><br/>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col s1"></div>
+                        <div class="col s11">
+                            <div class="input-field col s12">
+                                <input name="username" type="text" class="form-control" id="username" aria-describedby="usernameHelp">
+                                <label for="username">Username</label>
+                                <small id="usernameHelp" class="form-text text-muted">Up to 150 symbols.</small>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <label for="exampleInputEmail1">Email</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="password1" type="password" class="form-control" id="password1" aria-describedby="pwdHelp">
+                                <label for="password1">Password</label>
+                                <small id="pwdHelp" class="form-text text-muted">Restrictions don't work</small>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="password2" type="password" class="form-control" id="password2" aria-describedby="pwd2Help">
+                                <label for="password2">Repeat password</label>
+                            </div>
+                            <button type="submit" class="btn waves-effect waves-light">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <p>Please <a href="/login"><strong>login</strong></a> if you are already registered.</p>
+            </div>
         </div>
     </div>
 {% endblock %}

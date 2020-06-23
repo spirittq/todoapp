@@ -6,12 +6,50 @@ body {
 
 main {
     flex: 1 0 auto;
-    background-image: url("../background/archi.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .task-card{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.cat-margin{
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+.datepicker-date-display {
+    background-color: #E57373
+}
+
+.datepicker-day-button:focus {
+    color: white !important;
+    background-color: #E57373
+}
+
+.datepicker-done,
+.datepicker-cancel,
+.select-dropdown li>span,
+.is-today {
+    color: #E57373 !important
+}
+
+td.is-selected,
+.month-prev:active,
+.month-prev:focus,
+.month-next:active,
+.month-next:focus {
+    background-color: #E57373 !important
+}
+
+td.is-selected.is-today {
+    color: white !important
+}
+
+.tiny{
     margin-right: 5px;
     margin-left: 5px;
 }

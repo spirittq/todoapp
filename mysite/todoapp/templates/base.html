@@ -18,7 +18,7 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a href="{% url 'tasks' %}">Tasks</a></li>
                         <li><a href="{% url 'task-new' %}">New task</a></li>
-                        <li><a href="#">New category</a></li>
+                        <li><a href="{% url 'category-new' %}">New category</a></li>
                         {% if user.is_authenticated %}
                             <li><a href="{% url 'profile' %}">
                                 <i class="small material-icons left">account_circle</i>{{ user.get_username }}</a></li>
@@ -33,7 +33,7 @@
         </div>
     </header>
     <main>
-        <div class="container col s12">{% block content %}{% endblock %}</div>
+        {% block content %}{% endblock %}
     </main>
     <footer class="page-footer">
         <div class="container"></div>
@@ -43,12 +43,22 @@
             </div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems);
     });
+
+    $(document).ready(function(){
+        $('.datepicker').datepicker({format:"yyyy-mm-dd"});
+    });
+
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    });
+
 </script>
 </body>
 </html>

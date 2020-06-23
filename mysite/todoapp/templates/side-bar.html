@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if not user.category.all %}
+        <div class="row"></div>
+        <div class="row">
+             <div class="col s3"></div>
+             <div class="col s6">
+                <p><a href="{% url 'category-new' %}">Create a category first.</a></p>
+             </div>
+        </div>
+    {% else %}
+
+        <ul id="slide-out" class="sidenav">
+            <li class="cat-margin center-align white-text" style="background-color:#E57373; overflow:hidden; margin-top:10px;">All Categories</li>
+            {% for category in user.category.all %}
+                <li class="cat-margin center-align white-text" style="background-color:{{category.color}}; overflow:hidden;">
+                    {{ category.name }}
+                    <hr class="white-text">
+                    <i class="tiny material-icons">edit</i>
+                    <i class="tiny material-icons">delete</i>
+
+
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s2 center-align" style="position:fixed; margin-bottom:100px;">
+                <a href="#" data-target="slide-out" class="sidenav-trigger btn">Categories</a>
+            </div>
+            {% block content2 %}{% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}

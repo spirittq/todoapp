@@ -1,56 +1,68 @@
-{% extends "base.html" %}
+{% extends "side-bar.html" %}
 
-{% block content %}
-    <div class="row"></div>
-    <div class="row">
-        <div class="col s1"></div>
-        <div class="col s10">
-            <h3>Tasks</h3>
+{% block content2 %}
+    <div class="col s2"></div>
+    <div class="container col s9" style="border-left:1px solid #E57373">
+        <div class="row">
+            <div class="col s1"></div>
+            <div class="col s10">
+                <h3>Tasks</h3>
+            </div>
         </div>
-        {% if object_list %}
-            <div class="row"></div>
-            {% for task in object_list %}
-                <div class="col s4">
-                    <div class="card blue-grey z-depth-5">
-                        <div class="card-content white-text ">
-                            <h5>{{ task.title }}</h5>
-                            <p> {{ task.category }}</p>
-                            <p> {{ task.due_date }}</p>
-                            <p> {{ task.status }}</p>
-                            <p> {{task.description |truncatewords:"20"|linebreaks}}</p>
+        <div class="row">
+            {% if object_list %}
+                <div class="row"></div>
+                {% for task in object_list %}
+                    <div class="col s4">
+                        <div class="card z-depth-5" style="background-color:{{ task.category.color }};">
+                            <div class="card-content white-text ">
+                                <h5>{{ task.title }}</h5>
+                                <p> Category: {{ task.category }}</p>
+                                <hr>
+                                <p> Deadline: {{ task.due_date }}</p>
+                                <hr>
+                                <p> Status: {{ task.get_status_display }}</p>
+                                <hr>
+                                <p> Importance: {{ task.get_importance_display }}</p>
+                                <hr>
+                                <p> {{task.description |truncatewords:"20"|linebreaks}}</p>
+                            </div>
                         </div>
                     </div>
+                {% endfor %}
+            {% else %}
+                <div class="col s1"></div>
+                <div class="col s11">
+                    <p><a href="{% url 'task-new' %}">Create your first task!</a></p>
                 </div>
-            {% endfor %}
-        {% else %}
-            <p><a href="{% url 'task-new' %}">Create your first task!</a></p>
+            {% endif %}
+        </div>
+        {% if page_obj.has_other_pages %}
+            <div class="row center-align">
+                <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="waves-effect"><a href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                {% else %}
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                {% endif %}
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="active">
+                            <a href="#">{{ i }}</a>
+                        </li>
+                    {% else %}
+                        <li class="waves-effect">
+                            <a href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                {% else %}
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                {% endif %}
+                </ul>
+            </div>
         {% endif %}
     </div>
-    {% if page_obj.has_other_pages %}
-        <div class="row center-align">
-            <ul class="pagination">
-            {% if page_obj.has_previous %}
-                <li class="waves-effect"><a href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
-            {% else %}
-                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            {% endif %}
-            {% for i in page_obj.paginator.page_range %}
-                {% if page_obj.number == i %}
-                    <li class="active">
-                        <a href="#">{{ i }}</a>
-                    </li>
-                {% else %}
-                    <li class="waves-effect">
-                        <a href="?page={{ i }}">{{ i }}</a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-            {% if page_obj.has_next %}
-                <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
-            {% else %}
-                <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-            {% endif %}
-            </ul>
-        </div>
-    {% endif %}
 {% endblock %}

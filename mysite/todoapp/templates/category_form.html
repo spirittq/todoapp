@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container col s12">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6">
+                <div class="row">
+                    {{ form.media }}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="grey lighten-4 row">
+                            <legend class="border-bottom mb-4">New Category</legend>
+                            <div class="input-field col s12">
+                                {{ form.name }}
+                                <label for="id_name">Category name</label>
+                            <div class="input-field col s12">
+                                {{ form.color }}
+                                <small id="id_color" class="form-text text-muted">Category color</small>
+                            </div>
+                        </fieldset>
+                        <div class="row">
+                            <button class="btn waves-effect waves-light" type="submit">Create Category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

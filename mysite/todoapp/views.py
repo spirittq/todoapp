@@ -1,12 +1,12 @@
 from django.shortcuts import render, reverse
 from django.contrib.auth.decorators import login_required
-from .forms import UserUpdateForm, ProfileUpdateForm
+from .forms import UserUpdateForm, ProfileUpdateForm, CategoryForm, TaskForm
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login
-from .models import Task
+from .models import Task, Category
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView
 
@@ -65,17 +65,33 @@ def register(request):
 class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'tasks.html'
-    paginate_by = 5
+    paginate_by = 6
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user).order_by('date_created')
+        return Task.objects.filter(user=self.request.user).order_by('due_date')
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'category', 'due_date']
-    success_url = "/todoapp/"
+    form_class = TaskForm
+    success_url = "/todoapp/tasks"
     template_name = 'task_form.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs = super(TaskCreateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+
+class CategoryCreateView(LoginRequiredMixin, CreateView):
+    model = Category
+    form_class = CategoryForm
+    success_url = '/todoapp/tasks/new'
+    template_name = 'category_form.html'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
