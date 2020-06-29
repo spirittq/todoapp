@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from django.urls import reverse
 from colorfield.fields import ColorField
+import uuid
 
 
 class Task(models.Model):
@@ -41,6 +43,9 @@ class Task(models.Model):
         help_text='Importance of the task',
     )
 
+    def get_absolute_url(self):
+        return reverse('task', args=[str(self.id)])
+
     def __str__(self):
         return self.title
 
@@ -55,6 +60,7 @@ class Step(models.Model):
     due_date = models.DateField('Deadline', null=True, blank=True, help_text='Step deadline')
     task_id = models.ForeignKey('Task', on_delete=models.SET_NULL, null=True, related_name='steps')
     number = models.IntegerField('Step number')
+    lookup_id = models.UUIDField(default=uuid.uuid4, editable=False, db_index=True)
 
     def __str__(self):
         return self.title
@@ -62,6 +68,7 @@ class Step(models.Model):
     class Meta:
         verbose_name = 'Step'
         verbose_name_plural = 'Steps'
+        ordering = ['number']
 
 
 class Category(models.Model):

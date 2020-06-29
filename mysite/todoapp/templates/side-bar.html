@@ -12,17 +12,22 @@
     {% else %}
 
         <ul id="slide-out" class="sidenav">
-            <li class="cat-margin center-align white-text" style="background-color:#E57373; overflow:hidden; margin-top:10px;">All Categories</li>
-            {% for category in user.category.all %}
-                <li class="cat-margin center-align white-text" style="background-color:{{category.color}}; overflow:hidden;">
-                    {{ category.name }}
-                    <hr class="white-text">
-                    <i class="tiny material-icons">edit</i>
-                    <i class="tiny material-icons">delete</i>
-
-
-                </li>
-            {% endfor %}
+            <form method="get" action="{% url 'tasks' %}">
+                <ul class="ul-cat">
+                    <li>
+                        <button type="submit" class="cat-margin white-text btn" style="background-color:#E57373; overflow:hidden; margin-top:10px;">All Categories</button>
+                    </li>
+                    {% for category in user.category.all %}
+                        <li class="li-cat">
+                            <div class="form-group">
+                            <button class="white-text btn cat-margin" name="filter" type="submit" value="{{category.id}}" style="background-color:{{category.color}}; overflow:hidden;">{{category.name}}</button>
+                            <a href="{% url 'category-update' category.id %}"><i class="tiny material-icons" style="color:{{category.color}}">edit</i></a>
+                            <a href="{% url 'category-delete' category.id %}"><i class="tiny material-icons" style="color:{{category.color}}">delete</i></a>
+                        </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </form>
         </ul>
 
         <div class="row"></div>

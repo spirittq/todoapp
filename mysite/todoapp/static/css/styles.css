@@ -13,12 +13,15 @@ main {
     margin-left: 5px;
 }
 
+.li-cat{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .cat-margin{
-    margin-bottom: 5px;
-    margin-right: 10px;
     margin-left: 10px;
-    border-radius: 5px;
     padding: 0px;
+    width: 70%
 }
 
 .datepicker-date-display {
@@ -52,4 +55,13 @@ td.is-selected.is-today {
 .tiny{
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.ul-cat{
+    padding-bottom: 60px;
+}
+
+.handle-move {
+  cursor: move;
+  cursor: -webkit-grabbing;
 }

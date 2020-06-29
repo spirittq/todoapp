@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container col s12">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s6">
+                <h5>{{ object.title }}</h5>
+                <p> Category: {{ object.category.name }}</p>
+                <p> Created {{ object.date_created }}</p>
+                <p> Deadline: {{ object.due_date }}</p>
+                <p>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}</br>
+                        <input class="btn" type="submit" value="Change status">
+                    </form>
+                </p>
+                <p> Importance: {{ object.get_importance_display }}</p>
+                <hr>
+                <p> {{ object.description }}</p>
+                <p><a class="btn" href="{% url 'task-update' object.id %}">Edit</a> <a class="btn" href="{% url 'task-delete' object.id %}">Delete</a></p>
+            </div>
+            <div class="col s1"></div>
+            <div class="col s5">
+                {% if object.steps.all %}
+                    <a class="btn" href=" {% url 'steps' object.id %}">Edit step order</a>
+                    {% for step in object.steps.all %}
+                        <fieldset style="background-color:{{ step.task_id.category.color }}">
+                            <p>Step {{step.number }}: {{ step.title }}</p>
+                            <p> <a href="">Edit</a> | <a href="{% url 'step-delete' step.id  %}">Delete</a></p>
+                            <p>{{ step.description }}</p>
+                            <p>Finish until {{ step.due_date }}</p>
+                        </fieldset>
+                    {% endfor %}
+                {% endif %}
+                <a class="btn" href="{% url 'step' object.id %}">Add new step</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

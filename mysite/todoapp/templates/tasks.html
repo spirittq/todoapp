@@ -14,20 +14,22 @@
                 <div class="row"></div>
                 {% for task in object_list %}
                     <div class="col s4">
-                        <div class="card z-depth-5" style="background-color:{{ task.category.color }};">
-                            <div class="card-content white-text ">
-                                <h5>{{ task.title }}</h5>
-                                <p> Category: {{ task.category }}</p>
-                                <hr>
-                                <p> Deadline: {{ task.due_date }}</p>
-                                <hr>
-                                <p> Status: {{ task.get_status_display }}</p>
-                                <hr>
-                                <p> Importance: {{ task.get_importance_display }}</p>
-                                <hr>
-                                <p> {{task.description |truncatewords:"20"|linebreaks}}</p>
+                        <a href="{% url 'task' task.id %}">
+                            <div class="hoverable card z-depth-2" style="{%if task.category %}background-color:{{ task.category.color }};{%else%}background-color:#E57373;{%endif%}">
+                                <div class="card-content white-text ">
+                                    <h5>{{ task.title }}</h5>
+                                    <p> Category: {{ task.category }}</p>
+                                    <hr>
+                                    <p> Deadline: {{ task.due_date }}</p>
+                                    <hr>
+                                    <p> Status: {{ task.get_status_display }}</p>
+                                    <hr>
+                                    <p> Importance: {{ task.get_importance_display }}</p>
+                                    <hr>
+                                    <p> {{task.description |truncatewords:"20"|linebreaks}}</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 {% endfor %}
             {% else %}
@@ -40,8 +42,9 @@
         {% if page_obj.has_other_pages %}
             <div class="row center-align">
                 <ul class="pagination">
+                {% load my_tags %}
                 {% if page_obj.has_previous %}
-                    <li class="waves-effect"><a href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                    <li class="waves-effect"><a href="?{% url_replace page_obj.previous_page_number %}"><i class="material-icons">chevron_left</i></a></li>
                 {% else %}
                     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
                 {% endif %}
@@ -52,12 +55,12 @@
                         </li>
                     {% else %}
                         <li class="waves-effect">
-                            <a href="?page={{ i }}">{{ i }}</a>
+                            <a href="?{% url_replace i %}">{{ i }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
                 {% if page_obj.has_next %}
-                    <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                    <li class="waves-effect"><a href="?{% url_replace page_obj.next_page_number %}"><i class="material-icons">chevron_right</i></a></li>
                 {% else %}
                     <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
                 {% endif %}

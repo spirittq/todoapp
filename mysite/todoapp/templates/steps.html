@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container col s12">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6">
+                {% if object_list %}
+
+                    <table>
+                        <tbody id="groups" class="list-group">
+                            {% for step in object_list %}
+                                <tr data-lookup="{{ step.lookup_id }}" class="list-group-item">
+                                    <td>
+                                        <i class="handle-move material-icons">open_with</i>
+                                    </td>
+                                    <td>
+                                        <p class="step" data-lookup="{{ step.lookup_id }}">Step {{step.number }}: {{ step.title }}</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <form id="orderingForm" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <div class="row">
+                            <button id='saveOrdering' class="btn waves-effect waves-light" type="submit">Update</button>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
