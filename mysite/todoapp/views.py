@@ -3,16 +3,18 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm, CategoryForm, TaskForm, TaskUpdateForm, TaskStatusForm, OrderingForm, StepForm
 from django.contrib import messages
-from django.shortcuts import redirect, reverse
+from django.shortcuts import redirect
 from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login
 from .models import Task, Category, Step
-from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, FormView
 from django.db import transaction
-from django.views.decorators.http import require_POST
+from django.contrib.auth.password_validation import MinimumLengthValidator, UserAttributeSimilarityValidator, NumericPasswordValidator, CommonPasswordValidator
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+
 
 def index(request):
     return render(request, 'index.html')
@@ -46,6 +48,7 @@ def register(request):
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
+        validators = [MinimumLengthValidator, NumericPasswordValidator, UserAttributeSimilarityValidator, CommonPasswordValidator]
         if password1 == password2:
             if User.objects.filter(username=username).exists():
                 messages.error(request, f'Username {username} already taken')
@@ -55,6 +58,17 @@ def register(request):
                     messages.error(request, f'Email {email} already taken')
                     return redirect('register')
                 else:
+                    try:
+                        validate_email(email)
+                    except ValidationError as e:
+                        messages.error(request, str(e))
+                        return redirect('register')
+                    try:
+                        for validator in validators:
+                            validator().validate(password1)
+                    except ValidationError as e:
+                        messages.error(request, str(e))
+                        return redirect('register')
                     User.objects.create_user(username=username, email=email, password=password1)
                     new_user = authenticate(username=username, password=password1)
                     login(request, new_user)
@@ -204,8 +218,6 @@ class StepDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_success_url(self):
         step = self.get_object()
         return reverse_lazy('task', args=[str(step.task_id.id)])
-
-
 
 
 class StepListView(LoginRequiredMixin, ListView, FormView):

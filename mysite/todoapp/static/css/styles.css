@@ -65,3 +65,7 @@ td.is-selected.is-today {
   cursor: move;
   cursor: -webkit-grabbing;
 }
+
+.card-height {
+    height: 360px;
+}

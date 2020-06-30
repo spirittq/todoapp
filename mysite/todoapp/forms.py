@@ -24,8 +24,8 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['title', 'description', 'category', 'due_date', 'importance']
-        widgets = {'description': forms.Textarea(attrs={'style':'resize:none; height: 100px;'}),
-                   'due_date': forms.DateInput(attrs={'class':'datepicker'})}
+        widgets = {'description': forms.Textarea(attrs={'style': 'resize:none; height: 100px;'}),
+                   'due_date': forms.DateInput(attrs={'class': 'datepicker'})}
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
@@ -70,7 +70,7 @@ class StepForm(forms.ModelForm):
         model = Step
         fields = ['title', 'description', 'due_date', 'number', 'task_id']
         widgets = {'description': forms.Textarea(attrs={'style': 'resize:none; height: 100px;'}),
-                  'due_date': forms.DateInput(attrs={'class': 'datepicker'}), 'task_id': forms.HiddenInput}
+                  'due_date': forms.DateInput(attrs={'class': 'datepicker'}), 'task_id': forms.HiddenInput, 'number': forms.HiddenInput}
 
 
 class OrderingForm(forms.Form):

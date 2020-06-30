@@ -2,25 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c6552d2-6f6c-4c98-a5b0-c8476cf36062" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templates/category_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templates/step_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templates/step_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templates/steps.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templates/task.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templates/task_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templates/task_update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templates/template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/todoapp/templatetags/my_tags.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/media/profile_pics/archi.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/media/profile_pics/archi.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/side-bar.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/side-bar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/registration/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/registration/password_reset_complete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/registration/password_reset_confirm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/tasks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,9 +69,9 @@
     </state>
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1098.-1087.1920.1080/-822.-1080.1920.1080@0.0.1280.680" timestamp="1592887654162" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1592971051114" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1592844653633">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1593510024912">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1592844653633" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1593510024912" />
   </component>
 </project>

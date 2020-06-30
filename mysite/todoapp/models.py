@@ -55,11 +55,11 @@ class Task(models.Model):
 
 
 class Step(models.Model):
+
     title = models.CharField('Title', max_length=200, help_text="Step name")
     description = models.TextField('Description', max_length=1000, help_text='Step description')
     due_date = models.DateField('Deadline', null=True, blank=True, help_text='Step deadline')
     task_id = models.ForeignKey('Task', on_delete=models.SET_NULL, null=True, related_name='steps')
-    number = models.IntegerField('Step number')
     lookup_id = models.UUIDField(default=uuid.uuid4, editable=False, db_index=True)
 
     def __str__(self):
@@ -69,6 +69,13 @@ class Step(models.Model):
         verbose_name = 'Step'
         verbose_name_plural = 'Steps'
         ordering = ['number']
+
+    def order():
+        step = Step.objects.order_by('-number')[0]
+        default_number = step.number + 1
+        return default_number
+
+    number = models.IntegerField('Step number', default=order)
 
 
 class Category(models.Model):
