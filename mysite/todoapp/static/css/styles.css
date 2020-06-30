@@ -69,3 +69,7 @@ td.is-selected.is-today {
 .card-height {
     height: 360px;
 }
+
+.crossed {
+    text-decoration: line-through;
+}

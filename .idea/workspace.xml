@@ -8,10 +8,13 @@
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/media/profile_pics/archi.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/media/profile_pics/archi.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/registration/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/registration/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/registration/password_reset_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/category_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/category_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/step_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/step_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/task.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/task_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/task_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/tasks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/todoapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

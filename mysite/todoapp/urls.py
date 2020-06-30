@@ -11,6 +11,7 @@ urlpatterns = [
     path('tasks/<int:pk>/steps', views.StepListView.as_view(), name='steps'),
     path('tasks/<int:pk>/step', views.StepCreateView.as_view(), name='step'),
     path('step/<int:pk>/delete', views.StepDeleteView.as_view(), name='step-delete'),
+    path('step/<int:pk>/update', views.StepUpdateView.as_view(), name='step-update'),
     path('tasks/<int:pk>/update', views.TaskUpdateView.as_view(), name='task-update'),
     path('tasks/<int:pk>/delete', views.TaskDeleteView.as_view(), name='task-delete'),
     path('category/new', views.CategoryCreateView.as_view(), name='category-new'),

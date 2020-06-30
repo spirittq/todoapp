@@ -28,7 +28,7 @@
                     {% for step in object.steps.all %}
                         <fieldset style="background-color:{{ step.task_id.category.color }}">
                             <p>Step {{step.number }}: {{ step.title }}</p>
-                            <p> <a href="">Edit</a> | <a href="{% url 'step-delete' step.id  %}">Delete</a></p>
+                            <p> <a href="{% url 'step-update' step.id  %}">Edit</a> | <a href="{% url 'step-delete' step.id  %}">Delete</a></p>
                             <p>{{ step.description }}</p>
                             <p>Finish until {{ step.due_date }}</p>
                         </fieldset>

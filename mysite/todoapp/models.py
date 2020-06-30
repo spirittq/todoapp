@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from PIL import Image
 from django.urls import reverse
 from colorfield.fields import ColorField
+from datetime import date
 import uuid
 
 
@@ -43,6 +44,12 @@ class Task(models.Model):
         help_text='Importance of the task',
     )
 
+    @property
+    def is_overdue(self):
+        if self.due_date and date.today() > self.due_date:
+            return True
+        return False
+
     def get_absolute_url(self):
         return reverse('task', args=[str(self.id)])
 
@@ -71,8 +78,7 @@ class Step(models.Model):
         ordering = ['number']
 
     def order():
-        step = Step.objects.order_by('-number')[0]
-        default_number = step.number + 1
+        default_number = 0
         return default_number
 
     number = models.IntegerField('Step number', default=order)

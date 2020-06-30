@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from .forms import UserUpdateForm, ProfileUpdateForm, CategoryForm, TaskForm, TaskUpdateForm, TaskStatusForm, OrderingForm, StepForm
+from .forms import UserUpdateForm, ProfileUpdateForm, CategoryForm, TaskForm, TaskUpdateForm, TaskStatusForm, OrderingForm, StepForm, StepUpdateForm
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.forms import User
@@ -17,6 +17,21 @@ from django.core.exceptions import ValidationError
 
 
 def index(request):
+    if request.user.is_authenticated:
+        tasks = Task.objects.filter(user=request.user)
+        num_tasks = tasks.count()
+        num_tasks_ongoing = tasks.filter(status__exact='o').count()
+        num_tasks_finished = tasks.filter(status__exact='f').count()
+        num_tasks_paused = tasks.filter(status__exact='p').count()
+        num_tasks_abandoned = tasks.filter(status__exact='a').count()
+        context = {
+            'num_tasks': num_tasks,
+            'num_tasks_ongoing': num_tasks_ongoing,
+            'num_tasks_finished': num_tasks_finished,
+            'num_tasks_paused': num_tasks_paused,
+            'num_tasks_abandoned': num_tasks_abandoned,
+        }
+        return render(request, 'index.html', context=context)
     return render(request, 'index.html')
 
 
@@ -204,6 +219,10 @@ class StepCreateView(LoginRequiredMixin, CreateView):
         return context
 
     def get_success_url(self):
+        step = Step.objects.filter(task_id=self.kwargs['pk']).order_by('-number')[0]
+        new_step = Step.objects.filter(task_id=self.kwargs['pk']).order_by('number')[0]
+        new_step.number = step.number + 1
+        new_step.save()
         return reverse_lazy('task', args=[str(self.kwargs['pk'])])
 
 
@@ -217,6 +236,16 @@ class StepDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def get_success_url(self):
         step = self.get_object()
+        with transaction.atomic():
+            number = 1
+            steps = Step.objects.filter(task_id=step.task_id.id).order_by('number')
+            for step_order in steps:
+                if step.id == step_order.id:
+                    continue
+                else:
+                    step_order.number = number
+                    step_order.save()
+                    number += 1
         return reverse_lazy('task', args=[str(step.task_id.id)])
 
 
@@ -246,3 +275,21 @@ class StepListView(LoginRequiredMixin, ListView, FormView):
                     group.save()
                     current_order += 1
         return redirect('task', self.kwargs['pk'])
+
+
+class StepUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
+    model = Step
+    form_class = StepUpdateForm
+    template_name = "step_form.html"
+
+    def form_valid(self, form):
+        form.instance.task_id.user = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        step = self.get_object()
+        return self.request.user == step.task_id.user
+
+    def get_success_url(self):
+        step = self.get_object()
+        return reverse_lazy('task', args=[str(step.task_id.id)])

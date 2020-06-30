@@ -11,7 +11,7 @@
                     <form method="POST">
                         {% csrf_token %}
                         <fieldset class="grey lighten-4 row">
-                            <legend class="border-bottom mb-4">New Category</legend>
+                            <legend class="border-bottom mb-4">{% if object %}Update Category{% else %}New Category{% endif %}</legend>
                             <div class="input-field col s12">
                                 {{ form.name }}
                                 <label for="id_name">Category name</label>
@@ -21,7 +21,7 @@
                             </div>
                         </fieldset>
                         <div class="row">
-                            <button class="btn waves-effect waves-light" type="submit">Create Category</button>
+                            <button class="btn waves-effect waves-light" type="submit">{% if object %}Update Category{% else %}Create Category{% endif %}</button>
                         </div>
                     </form>
                 </div>

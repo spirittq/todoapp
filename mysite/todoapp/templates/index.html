@@ -7,7 +7,16 @@
             <div class="col s3"></div>
             <div class="col s6">
                 {% if user.is_authenticated %}
-                <p>Under construction</p>
+                <h2>{{ user.get_username }}'s Dashboard</h2>
+                <ul class="collection with-header">
+                    <li class="collection-item"><span class="badge">{{ num_tasks }}</span>Total tasks</li>
+                    <li class="collection-item"><span class="badge">{{ num_tasks_ongoing }}</span>Ongoing tasks</li>
+                    <li class="collection-item"><span class="badge">{{ num_tasks_finished }}</span>Finished tasks</li>
+                    <li class="collection-item"><span class="badge">{{ num_tasks_paused }}</span>Paused Tasks</li>
+                    <li class="collection-item"><span class="badge">{{ num_tasks_abandoned }}</span>Abandoned tasks</li>
+                </ul>
+
+
                 {% else %}
                 <h1>Welcome to ToDo!</h1>
                 <p>Please <a class="pulse" href="{% url 'login' %}">Log in</a> or <a class="pulse" href="{% url 'register' %}">Register</a></p>

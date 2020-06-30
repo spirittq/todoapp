@@ -10,11 +10,11 @@
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="grey lighten-4 row">
-                        <legend class="border-bottom mb-4">New Step</legend>
+                        <legend class="border-bottom mb-4">{% if object %}Update Step{% else %}New Step{% endif %}</legend>
                         {{ form|crispy }}
                     </fieldset>
                     <div class="row">
-                        <button class="btn waves-effect waves-light" type="submit">Create Step</button>
+                        <button class="btn waves-effect waves-light" type="submit">{% if object %}Update Step{% else %}Create Step{% endif %}</button>
                     </div>
                 </form>
                 </div>

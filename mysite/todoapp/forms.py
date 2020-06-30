@@ -70,7 +70,16 @@ class StepForm(forms.ModelForm):
         model = Step
         fields = ['title', 'description', 'due_date', 'number', 'task_id']
         widgets = {'description': forms.Textarea(attrs={'style': 'resize:none; height: 100px;'}),
-                  'due_date': forms.DateInput(attrs={'class': 'datepicker'}), 'task_id': forms.HiddenInput, 'number': forms.HiddenInput}
+                   'due_date': forms.DateInput(attrs={'class': 'datepicker'}), 'task_id': forms.HiddenInput, 'number': forms.HiddenInput}
+
+
+class StepUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Step
+        fields = ['title', 'description', 'due_date', 'task_id']
+        widgets = {'description': forms.Textarea(attrs={'style': 'resize:none; height: 100px;'}),
+               'due_date': forms.DateInput(attrs={'class': 'datepicker'}), 'task_id': forms.HiddenInput}
 
 
 class OrderingForm(forms.Form):

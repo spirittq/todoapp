@@ -15,12 +15,12 @@
                 {% for task in object_list %}
                     <div class="col s4">
                         <a href="{% url 'task' task.id %}">
-                            <div class="card-height hoverable card z-depth-2" style="overflow:hidden; {%if task.category %}background-color:{{ task.category.color }};{%else%}background-color:#E57373;{%endif%}">
-                                <div class="card-content white-text ">
+                            <div class="card-height hoverable card z-depth-5" style="overflow:hidden; {%if task.category %}background-color:{{ task.category.color }};{%else%}background-color:#E57373;{%endif%}">
+                                <div class="card-content white-text {% if task.status == 'f' %}crossed{% endif %}">
                                     <h5>{{ task.title }}</h5>
                                     <p> Category: {{ task.category }}</p>
                                     <hr>
-                                    <p> Deadline: {{ task.due_date }}</p>
+                                    <p> Deadline: {{ task.due_date }} {% if task.is_overdue and task.status != 'f' %}<i class="material-icons">priority_high</i>{%endif%}</p>
                                     <hr>
                                     <p> Status: {{ task.get_status_display }}</p>
                                     <hr>
