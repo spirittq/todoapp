@@ -8,8 +8,8 @@ import uuid
 
 
 class Task(models.Model):
-    title = models.CharField('Pavadinimas', max_length=200, help_text="Task name")
-    description = models.TextField('Aprašymas', max_length=1000, help_text='Task description')
+    title = models.CharField('Title', max_length=200, help_text="Task name")
+    description = models.TextField('Description', max_length=1000, help_text='Task description')
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='tasks')
     date_created = models.DateTimeField(auto_now_add=True)
     due_date = models.DateField('Deadline', null=True, blank=True, help_text='Task deadline')

@@ -249,7 +249,7 @@ class StepDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return reverse_lazy('task', args=[str(step.task_id.id)])
 
 
-class StepListView(LoginRequiredMixin, ListView, FormView):
+class StepListView(LoginRequiredMixin, UserPassesTestMixin, ListView, FormView):
     model = Step
     template_name = "steps.html"
     form_class = OrderingForm
@@ -275,6 +275,11 @@ class StepListView(LoginRequiredMixin, ListView, FormView):
                     group.save()
                     current_order += 1
         return redirect('task', self.kwargs['pk'])
+
+    def test_func(self):
+        task = Task.objects.filter(id=self.kwargs['pk'])[0]
+        print(task)
+        return self.request.user == task.user
 
 
 class StepUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):

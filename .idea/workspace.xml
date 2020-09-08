@@ -4,17 +4,8 @@
     <list default="true" id="2c6552d2-6f6c-4c98-a5b0-c8476cf36062" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/media/profile_pics/archi.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/media/profile_pics/archi.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/category_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/category_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/step_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/step_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/task.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/task_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/task_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/templates/tasks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/todoapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/todoapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/todoapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,6 +58,10 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="401" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597428765536">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="401" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1597428765536" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1592971051114">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
